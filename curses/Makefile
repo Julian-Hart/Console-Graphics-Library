@@ -1,15 +1,16 @@
-flags=-02 -Wall -std=c2x
-ldflags=-lbu
+CC = cc
+CFLAGS = -O2 -Wall -std=c2x
+LDFLAGS = -lncurses
 
 .PHONY: all clean
 
-all: clean curses
+all: curses
 
 curses: curses.o
-	cc $(flags) $^ -o $@ $(ldflags)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 curses.o: curses.c curses.h
-	cc $(flags) -c $<
+	$(CC) $(CFLAGS) -c $<
 
 clean:
 	rm -f *.o curses
